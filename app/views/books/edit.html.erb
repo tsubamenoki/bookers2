@@ -7,3 +7,6 @@
   <%= f.text_area :body, placeholder: "内容" %>
   <%= f.submit "Update Book" %>
 <% end %>
+
+<%= link_to "Show", book_path(@book.id) %>
+<%= link_to "Back", books_path %>
