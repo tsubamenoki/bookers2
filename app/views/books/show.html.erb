@@ -9,7 +9,9 @@
     <div class="offset-md-1 col-md-8">
       <h2>Book detail</h2>
         <div>
-          <%= image_tag @book.user.get_profile_image(100,100) %>
+          <%=link_to user_path(@book.user_id) do %>
+            <%= image_tag @book.user.get_profile_image(100,100) %>
+          <% end %>
           <%= link_to @book.user.name, user_path(@book.user_id) %>
           <%= link_to @book.title %>
           <%= @book.body %>
