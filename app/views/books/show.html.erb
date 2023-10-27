@@ -1,13 +1,23 @@
-<h2>Book detail</h2>
-
-  <div>
-    <%= image_tag @book.user.get_image %>
-
-    <%= link_to @book.title %>
-    <%= @book.body %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'showlist', user: @user, booknew: @booknew %>
+    </div>
+    <div class="offset-md-1 col-md-8">
+      <h2>Book detail</h2>
+        <div>
+          <%= image_tag @book.user.get_profile_image(100,100) %>
+          <%= link_to @book.user.name, user_path(@book.user_id) %>
+          <%= link_to @book.title %>
+          <%= @book.body %>
+        </div>
+      <% if @book.user_id==current_user.id %>
+        <%= link_to 'Edit', edit_book_path(@book.id) %>
+        <%= link_to 'Destroy',book_path(@book.id), method: :delete %>
+      <% end %>
+    </div>
   </div>
+</div>
 
-<% if @book.user_id==current_user.id %>
-  <%= link_to 'Edit', edit_book_path(@book.id) %>
-  <%= link_to 'Destroy',book_path(@book.id), method: :delete %>
-<% end %>
+
+
